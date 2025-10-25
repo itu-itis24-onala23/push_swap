@@ -17,7 +17,8 @@ typedef struct s_list
 long int ft_atoi(const char *str);
 char	**ft_split(const char *s, char c);
 void	error(void);
-void	is_valid(char *str);
+int	is_valid(char *str);
 int		ft_is_number(char c);
-void		ft_is_overflow(long int number);
+int		ft_is_overflow(long int number);
+void        free_func(char **str);
 #endif

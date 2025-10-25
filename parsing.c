@@ -8,31 +8,38 @@ int	ft_is_number(char c)
 		return (1);
 	return (0);
 }
-void ft_is_overflow(long int number)
+int ft_is_overflow(long int number)
 {
+
 	if(number > INT_MAX || number < INT_MIN)
-		error();
+		return (0);
+	return (1);
+		;
 }
-void	is_valid(char *str)
+int	is_valid(char *str)
 {
 	int i;
+	int control;
 
 	i = 0;
+	control = 1;
+	printf("burada\n");
 	if (str[i] == '\0')
-		error();
+		control = 0;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
 	if (str[i] == '\0')
-		error();
+		control = 0;
 	while (str[i] != '\0')
 	{
 		if (!(ft_is_number(str[i])))
-		{
-			printf("%c ",str[i]);	
-			error();
+		{	
+			control = 0;
+			break;
 		}
 		i++;
 	}
+	return (control);
 }
 long int	ft_atoi(const char *str)
 {
