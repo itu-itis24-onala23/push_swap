@@ -14,7 +14,6 @@ void	free_func(char **str)
 void	part1(char **str, int j, t_list **stack)
 {
 	long int number;
-	t_list *neww;
 
 	while (str[j] != NULL)
 	{
@@ -32,8 +31,7 @@ void	part1(char **str, int j, t_list **stack)
 			free_func(str);
 			error();
 		}
-		neww = new_node(number);
-		push_stack(stack, neww);
+		push_stack_end(stack, number);
 		if(!(is_duplicate(*stack)))
 		{
 			free_func(str);
@@ -56,6 +54,7 @@ int	main(int argc, char **argv)
 		str = ft_split(argv[i], ' ');
 		if (!str || str[0] == NULL)
 		{
+			free_stack(stack);
 			free_func(str);
 			error();
 		}
@@ -63,4 +62,6 @@ int	main(int argc, char **argv)
 		free_func(str);
 		i++;
 	}
+	print_stack(stack);
+	free_stack(stack);
 }

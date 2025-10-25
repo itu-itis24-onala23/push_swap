@@ -22,9 +22,9 @@ int		ft_is_number(char c);
 int		ft_is_overflow(long int number);
 void        free_func(char **str);
 void	part1(char **str, int j, t_list **stack);
-void push_stack(t_list  **stack, t_list *new);
 void free_stack(t_list *stack);
 int is_duplicate(t_list *stack);
-t_list	*new_node(int value);
+void	push_stack_end(t_list **stack, int value);
+void print_stack(t_list *stack);
 
 #endif
