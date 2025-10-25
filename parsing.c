@@ -14,7 +14,7 @@ int ft_is_overflow(long int number)
 	if(number > INT_MAX || number < INT_MIN)
 		return (0);
 	return (1);
-		;
+
 }
 int	is_valid(char *str)
 {
@@ -64,4 +64,26 @@ long int	ft_atoi(const char *str)
 		i++;
 	}
 	return (sign * result);
+}
+int is_duplicate(t_list *stack)
+{
+	t_list *first;
+	t_list *second;
+
+	first = stack;
+	while(first != NULL)
+	{
+		second = first->next;
+		while(second != NULL)
+		{
+			if(first->value == second->value)
+			{
+				free_stack(stack);
+				return (0);
+			}
+			second = second->next;
+		}
+		first = first->next;
+	}
+	return (1);
 }
