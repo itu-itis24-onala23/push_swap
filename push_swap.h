@@ -26,5 +26,9 @@ void free_stack(t_list *stack);
 int is_duplicate(t_list *stack);
 void	push_stack_end(t_list **stack, int value);
 void print_stack(t_list *stack);
+void two_sort(t_list *stack);
+void sa(t_list *stack);
+int count_nodes(t_list *stack);
+int find_index(t_list *stack);
 
 #endif

@@ -15,7 +15,6 @@ void	push_stack_end(t_list **stack, int value)
 		*stack = new_node;
 		return;
 	}
-
 	temp = *stack;
 	while (temp->next != NULL)
 		temp = temp->next;
