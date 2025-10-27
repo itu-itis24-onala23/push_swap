@@ -1,4 +1,5 @@
 #include "push_swap.h"
+
 void free_stack(t_list *stack)
 {
 	t_list *temp;

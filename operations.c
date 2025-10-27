@@ -16,20 +16,20 @@ void sa(t_list *stack)
 //stackin en tepesindeki elemanı alıp en alta taşır
 void ra(t_list **stack)
 {
-    t_list *last;
-    t_list *first;
+    t_list *last; //temp
+    t_list *first; //iter
 
     if(!*stack || !(*stack)->next)
         return;
-    first = *stack;
-    *stack = first->next;
-    first->next = NULL;
-    last = *stack;
+   last = *stack;
+   first = *stack;
+   *stack = (*stack)->next;
+   while(first->next)
+        first = first->next;
+    first->next = last;
+    last->next = NULL;
+    write(1,"ra\n",3);
 
-    while(last->next != NULL)
-        last = last->next;
-    last->next = first;
-    write(1,"ra\n",4);
 }
 //stackin en altındaki elemanı alıp tepeye taşır
 void rra(t_list **stack)
@@ -52,8 +52,10 @@ void pb(t_list **a, t_list **b)
 {
     t_list *temp;
 
+    if (!*a)
+        return;
     temp = *a;
-    (*a) = (*a)->next;
+    *a = (*a)->next;
     temp->next = *b;
     *b = temp;
     write(1,"pb\n",3);
@@ -62,6 +64,8 @@ void pa(t_list **a, t_list **b)
 {
     t_list *temp;
 
+    if (!*b)
+        return;
     temp = *b;
     *b = (*b)->next;
     temp->next = *a;

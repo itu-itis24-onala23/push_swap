@@ -27,9 +27,21 @@ void print_stack(t_list *stack)
     printf("Stack: ");
     while (tmp != NULL)
     {
-        printf("%d ", tmp->value); // node değerini yaz
-        tmp = tmp->next;           // bir sonraki node’a geç
+        printf("%d ", tmp->value);
+        tmp = tmp->next;
     }
     printf("\n");
+}
+
+void	free_func(char **str)
+{
+	int j;
+
+	j = 0;
+	if (!str)
+		return ;
+	while (str[j] != NULL)
+		free(str[j++]);
+	free(str);
 }
 

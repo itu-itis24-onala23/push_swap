@@ -23,7 +23,6 @@ int	is_valid(char *str)
 
 	i = 0;
 	control = 1;
-	printf("burada\n");
 	if (str[i] == '\0')
 		control = 0;
 	if (str[i] == '+' || str[i] == '-')
