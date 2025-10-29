@@ -1,7 +1,5 @@
 #include "push_swap.h"
 
-// sadece + veya- den (bir tane olacak )veya sayılardan oluşmalı herhangi bir başka şey icermemeli
-// + ve - sadece başta olacak yani sayı ortasında "4-2" olamaz
 int	ft_is_number(char c)
 {
 	if (c >= '0' && c <= '9')

@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-void two_sort(t_list *stack)
+void two_sort(t_list **stack)
 {
-    if(stack->value > stack->next->value)
+    if((*stack)->value > (*stack)->next->value)
         sa(stack);
 }
 void three_sort(t_list **stack)
@@ -15,17 +15,17 @@ void three_sort(t_list **stack)
     b = (*stack) ->next->value;
     c = (*stack)->next->next->value;
     if(a > b && b < c && a < c)
-        sa(*stack);
+        sa(stack);
     else if(a > b && b > c)
     {
-        sa(*stack);
+        sa(stack);
         rra(stack);
     }
     else if(a > b && b < c && a > c)
         ra(stack);
     else if(a < b && a < c && c < b)
     {
-        sa(*stack);
+        sa(stack);
         ra(stack);
     }
     else if(a < b && b > c && a > c)
@@ -54,14 +54,10 @@ void four_to_ten(t_list **stacka, t_list **stackb)
                 rra(stacka);
         }
         pb(stacka, stackb);
-        printf("stack b");
-        print_stack(*stackb);
-        printf("stack a");
-        print_stack(*stacka);
         size--;
     }
         three_sort(stacka);
         while(*stackb != NULL)
-        pa(stacka, stackb);
+            pa(stacka, stackb);
 }
 

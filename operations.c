@@ -1,23 +1,23 @@
 #include "push_swap.h"
 
-void sa(t_list *stack)
+void sa(t_list **stack)
 {
     t_list *temp;
     int temp_val;
 
-    if(!stack || !stack->next)
+    if(!(*stack) || !(*stack)->next)
         return;
-    temp = stack->next;
-    temp_val = stack->value;
-    stack->value = temp->value;
+    temp = (*stack)->next;
+    temp_val = (*stack)->value;
+    (*stack)->value = temp->value;
     temp->value= temp_val;
-    write(1,"sa\n",4);
+    write(1,"sa\n",3);
 }
-//stackin en tepesindeki elemanı alıp en alta taşır
+
 void ra(t_list **stack)
 {
-    t_list *last; //temp
-    t_list *first; //iter
+    t_list *last;
+    t_list *first;
 
     if(!*stack || !(*stack)->next)
         return;
@@ -31,7 +31,7 @@ void ra(t_list **stack)
     write(1,"ra\n",3);
 
 }
-//stackin en altındaki elemanı alıp tepeye taşır
+
 void rra(t_list **stack)
 {
     t_list *first;

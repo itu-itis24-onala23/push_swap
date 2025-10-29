@@ -10,7 +10,7 @@ void	push_stack_end(t_list **stack, int value)
 	new_node->value = value;
 	new_node->next = NULL;
 
-	if (!*stack) // stack boşsa, direkt buradan başlat
+	if (!*stack)
 	{
 		*stack = new_node;
 		return;
@@ -31,6 +31,17 @@ void print_stack(t_list *stack)
         tmp = tmp->next;
     }
     printf("\n");
+}
+
+int check_sorted(t_list *stack_a)
+{
+	while(stack_a->next != NULL)
+	{
+		if(stack_a->value > stack_a->next->value)
+			return(0);
+		stack_a = stack_a->next;
+	}
+	return(1);
 }
 
 void	free_func(char **str)

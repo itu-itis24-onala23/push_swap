@@ -41,8 +41,13 @@ static void part3(t_list **stack, t_list **stack_b)
 	int size;
 
 	size = count_nodes(*stack);
+	if(size == 1)
+	{
+		free_stack(*stack);
+		exit(0);
+	}
 	if(size == 2)
-		two_sort(*stack);
+		two_sort(stack);
 	else if(size == 3)
 		three_sort(stack);
 	else if(size >= 4 && size <= 10)
@@ -50,7 +55,11 @@ static void part3(t_list **stack, t_list **stack_b)
 	else
 		big_number(stack, stack_b, size);
 }
-
+static void arg_control(int argc)
+{
+	if(argc == 1)
+		exit(0);
+}
 int	main(int argc, char **argv)
 {
 	int i;
@@ -61,6 +70,7 @@ int	main(int argc, char **argv)
 	i = 1;
 	stack = NULL;
 	stack_b = NULL;
+	arg_control(argc);
 	while (i < argc)
 	{
 		str = ft_split(argv[i], ' ');
@@ -69,8 +79,11 @@ int	main(int argc, char **argv)
 		free_func(str);
 		i++;
 	}
-	print_stack(stack);
+	if(check_sorted(stack))
+	{
+		free_stack(stack);
+		exit(0);
+	}
 	part3(&stack, &stack_b);
-	print_stack(stack);
 	free_stack(stack);
 }

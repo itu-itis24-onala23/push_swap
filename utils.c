@@ -12,8 +12,8 @@ void free_stack(t_list *stack)
 }
 void	error(void)
 {
-	write(2, "error\n", 7);
-	exit(1); //hata ile çıkış
+	write(2, "Error\n", 7);
+	exit(1);
 }
 int count_nodes(t_list *stack)
 {
