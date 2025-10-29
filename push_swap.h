@@ -34,7 +34,7 @@ int check_sorted(t_list *stack_a);
 void big_number(t_list **a, t_list **b, int size);
 void two_sort(t_list **stack);
 void three_sort(t_list **stack);
-void four_to_ten(t_list **stacka, t_list **stackb);
+void four_to_ten(t_list **stacka, t_list **stackb, int size);
 
 
 void sa(t_list **stack);

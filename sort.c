@@ -31,13 +31,11 @@ void three_sort(t_list **stack)
     else if(a < b && b > c && a > c)
         rra(stack);
 }
-void four_to_ten(t_list **stacka, t_list **stackb)
+void four_to_ten(t_list **stacka, t_list **stackb,int size)
 {
-    int size;
     int min_index;
     int step;
 
-    size = count_nodes(*stacka);
      while(size > 3)
     {
         min_index = find_index(*stacka);

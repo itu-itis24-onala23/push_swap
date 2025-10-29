@@ -51,7 +51,7 @@ static void part3(t_list **stack, t_list **stack_b)
 	else if(size == 3)
 		three_sort(stack);
 	else if(size >= 4 && size <= 10)
-		four_to_ten(stack, stack_b);
+		four_to_ten(stack, stack_b, size);
 	else
 		big_number(stack, stack_b, size);
 }
