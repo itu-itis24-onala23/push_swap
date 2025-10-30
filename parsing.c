@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayonal <ayonal@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/30 15:12:59 by ayonal            #+#    #+#             */
+/*   Updated: 2025/10/30 15:13:01 by ayonal           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	ft_is_number(char c)
@@ -6,18 +18,18 @@ int	ft_is_number(char c)
 		return (1);
 	return (0);
 }
-int ft_is_overflow(long int number)
-{
 
-	if(number > INT_MAX || number < INT_MIN)
+int	ft_is_overflow(long int number)
+{
+	if (number > INT_MAX || number < INT_MIN)
 		return (0);
 	return (1);
-
 }
+
 int	is_valid(char *str)
 {
-	int i;
-	int control;
+	int	i;
+	int	control;
 
 	i = 0;
 	control = 1;
@@ -30,14 +42,15 @@ int	is_valid(char *str)
 	while (str[i] != '\0')
 	{
 		if (!(ft_is_number(str[i])))
-		{	
+		{
 			control = 0;
-			break;
+			break ;
 		}
 		i++;
 	}
 	return (control);
 }
+
 long int	ft_atoi(const char *str)
 {
 	int			i;
@@ -62,18 +75,19 @@ long int	ft_atoi(const char *str)
 	}
 	return (sign * result);
 }
-int is_duplicate(t_list *stack)
+
+int	is_duplicate(t_list *stack)
 {
-	t_list *first;
-	t_list *second;
+	t_list	*first;
+	t_list	*second;
 
 	first = stack;
-	while(first != NULL)
+	while (first != NULL)
 	{
 		second = first->next;
-		while(second != NULL)
+		while (second != NULL)
 		{
-			if(first->value == second->value)
+			if (first->value == second->value)
 			{
 				free_stack(stack);
 				return (0);

@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayonal <ayonal@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/30 15:19:12 by ayonal            #+#    #+#             */
+/*   Updated: 2025/10/30 15:19:29 by ayonal           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
 void	push_stack_end(t_list **stack, int value)
 {
 	t_list	*new_node;
@@ -9,44 +22,45 @@ void	push_stack_end(t_list **stack, int value)
 		error();
 	new_node->value = value;
 	new_node->next = NULL;
-
 	if (!*stack)
 	{
 		*stack = new_node;
-		return;
+		return ;
 	}
 	temp = *stack;
 	while (temp->next != NULL)
 		temp = temp->next;
 	temp->next = new_node;
 }
-void print_stack(t_list *stack)
-{
-    t_list *tmp = stack;
 
-    printf("Stack: ");
-    while (tmp != NULL)
-    {
-        printf("%d ", tmp->value);
-        tmp = tmp->next;
-    }
-    printf("\n");
+void	print_stack(t_list *stack)
+{
+	t_list	*tmp;
+
+	tmp = stack;
+	printf("Stack: ");
+	while (tmp != NULL)
+	{
+		printf("%d ", tmp->value);
+		tmp = tmp->next;
+	}
+	printf("\n");
 }
 
-int check_sorted(t_list *stack_a)
+int	check_sorted(t_list *stack_a)
 {
-	while(stack_a->next != NULL)
+	while (stack_a->next != NULL)
 	{
-		if(stack_a->value > stack_a->next->value)
-			return(0);
+		if (stack_a->value > stack_a->next->value)
+			return (0);
 		stack_a = stack_a->next;
 	}
-	return(1);
+	return (1);
 }
 
 void	free_func(char **str)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	if (!str)
@@ -55,4 +69,3 @@ void	free_func(char **str)
 		free(str[j++]);
 	free(str);
 }
-

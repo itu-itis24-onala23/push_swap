@@ -1,16 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayonal <ayonal@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/30 15:11:34 by ayonal            #+#    #+#             */
+/*   Updated: 2025/10/30 15:11:34 by ayonal           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-static void part1(t_list *stack, char **str)
+
+static void	part1(t_list *stack, char **str)
 {
 	if (!str || str[0] == NULL)
 	{
-	free_stack(stack);
-	free_func(str);
-	error();
+		free_stack(stack);
+		free_func(str);
+		error();
 	}
 }
+
 static void	part2(char **str, int j, t_list **stack)
 {
-	long int number;
+	long int	number;
 
 	while (str[j] != NULL)
 	{
@@ -28,7 +42,7 @@ static void	part2(char **str, int j, t_list **stack)
 			error();
 		}
 		push_stack_end(stack, number);
-		if(!(is_duplicate(*stack)))
+		if (!(is_duplicate(*stack)))
 		{
 			free_func(str);
 			error();
@@ -36,36 +50,39 @@ static void	part2(char **str, int j, t_list **stack)
 		j++;
 	}
 }
-static void part3(t_list **stack, t_list **stack_b)
+
+static void	part3(t_list **stack, t_list **stack_b)
 {
-	int size;
+	int	size;
 
 	size = count_nodes(*stack);
-	if(size == 1)
+	if (size == 1)
 	{
 		free_stack(*stack);
 		exit(0);
 	}
-	if(size == 2)
+	if (size == 2)
 		two_sort(stack);
-	else if(size == 3)
+	else if (size == 3)
 		three_sort(stack);
-	else if(size >= 4 && size <= 10)
+	else if (size >= 4 && size <= 10)
 		four_to_ten(stack, stack_b, size);
 	else
 		big_number(stack, stack_b, size);
 }
-static void arg_control(int argc)
+
+static void	arg_control(int argc)
 {
-	if(argc == 1)
+	if (argc == 1)
 		exit(0);
 }
+
 int	main(int argc, char **argv)
 {
-	int i;
-	char **str;
-	t_list *stack;
-	t_list *stack_b; 
+	int		i;
+	char	**str;
+	t_list	*stack;
+	t_list	*stack_b;
 
 	i = 1;
 	stack = NULL;
@@ -74,12 +91,12 @@ int	main(int argc, char **argv)
 	while (i < argc)
 	{
 		str = ft_split(argv[i], ' ');
-		part1(stack,str);
+		part1(stack, str);
 		part2(str, 0, &stack);
 		free_func(str);
 		i++;
 	}
-	if(check_sorted(stack))
+	if (check_sorted(stack))
 	{
 		free_stack(stack);
 		exit(0);
